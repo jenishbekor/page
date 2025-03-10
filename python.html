@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restricted OneCompiler</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="compilerFrame" src="https://onecompiler.com/python" sandbox="allow-forms allow-same-origin allow-scripts"></iframe>
+
+    <script>
+        // Wait for the iframe to load
+        document.getElementById('compilerFrame').onload = function() {
+            let frame = document.getElementById('compilerFrame').contentWindow.document;
+
+            // Try to find and disable the AI Help button
+            setTimeout(() => {
+                let aiButton = frame.querySelector('button[aria-label="AI Help"]');
+                if (aiButton) {
+                    aiButton.style.display = "none";  // Hide the button
+                    // aiButton.disabled = true;      // Alternative: Disable the button instead of hiding
+                }
+            }, 2000); // Delay to ensure the page has fully loaded
+        };
+    </script>
+</body>
+</html>
