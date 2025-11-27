@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Tutorial: I/O and Collections</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Java Tutorial: Input/Output and Collections</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button onclick="showSection('io')">1️⃣ Input / Output</button>
+      <button onclick="showSection('string')">2️⃣ String Methods</button>
+      <button onclick="showSection('arraylist')">2️⃣ ArrayList</button>
+      <button onclick="showSection('hashset')">3️⃣ HashSet</button>
+      <button onclick="showSection('arraydeque')">4️⃣ ArrayDeque</button>
+      <button onclick="showSection('hashmap')">5️⃣ HashMap</button>
+    </div>
+
+    <!-- Sections -->
+    <div id="io" class="section">
+      <h2>Java Input and Output</h2>
+      <p>
+        Use <code>Scanner</code> for console input and
+        <code>System.out</code> for output.
+      </p>
+      <pre><code>import java.util.Scanner;
+
+public class InputExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter age: ");
+        int age = sc.nextInt();
+
+        System.out.println("Hello, " + name + "! You are " + age + " years old.");
+
+        sc.close();
+    }
+}</code></pre>
+    </div>
+
+    <!-- String Methods -->
+    <div id="string" class="section hidden">
+      <h2>String — Text Manipulation</h2>
+      <p>
+        Strings in Java are immutable and provide many helpful methods for
+        processing text.
+      </p>
+      <pre><code>public class StringMethods {
+    public static void main(String[] args) {
+        String text = "  Hello Java World!  ";
+
+        // Trim spaces
+        System.out.println(text.trim());
+
+        // Length
+        System.out.println("Length: " + text.length());
+
+        // Access character
+        System.out.println("First char: " + text.charAt(0));
+
+        // Substring
+        System.out.println("Substring: " + text.substring(2, 7));
+
+        // Case conversion
+        System.out.println(text.toUpperCase());
+        System.out.println(text.toLowerCase());
+
+        // Replace
+        System.out.println(text.replace("Java", "Python"));
+
+        // Check content
+        System.out.println(text.contains("Java"));
+        System.out.println(text.startsWith("  H"));
+        System.out.println(text.endsWith("!  "));
+
+        // Split string
+        String[] words = text.trim().split(" ");
+        for (String w : words) System.out.println(w);
+
+        // Join strings
+        String joined = String.join("-", "apple", "banana", "cherry");
+        System.out.println(joined);
+
+        // Compare
+        String a = "Hello";
+        String b = "hello";
+        System.out.println(a.equals(b));          // false
+        System.out.println(a.equalsIgnoreCase(b));// true
+
+        // Concatenate
+        String greeting = a.concat(" ").concat("Java");
+        System.out.println(greeting);
+
+        // Check empty or blank
+        String s = " ";
+        System.out.println(s.isEmpty()); // false
+        System.out.println(s.isBlank()); // true
+    }
+}</code></pre>
+
+      <h3>📘 Useful Methods</h3>
+      <ul>
+        <li><code>length()</code> — number of characters</li>
+        <li><code>charAt(int index)</code> — get character</li>
+        <li><code>substring(int start, int end)</code></li>
+        <li><code>toUpperCase()</code>, <code>toLowerCase()</code></li>
+        <li><code>trim()</code>, <code>strip()</code></li>
+        <li><code>replace(old, new)</code></li>
+        <li><code>split(regex)</code>, <code>join(delimiter, ...)</code></li>
+        <li><code>equals()</code>, <code>equalsIgnoreCase()</code></li>
+        <li>
+          <code>startsWith()</code>, <code>endsWith()</code>,
+          <code>contains()</code>
+        </li>
+        <li><code>isEmpty()</code>, <code>isBlank()</code></li>
+        <li><code>concat(String s)</code></li>
+      </ul>
+    </div>
+
+    <div id="arraylist" class="section hidden">
+      <h2>ArrayList — Dynamic Array</h2>
+      <p>
+        <code>ArrayList</code> allows dynamic resizing, duplicates, and ordered
+        storage.
+      </p>
+      <pre><code>import java.util.*;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        ArrayList&lt;String&gt; list = new ArrayList<>();
+
+        // Add elements
+        list.add("Orange");
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Mango");
+
+        // Access and modify
+        System.out.println(list.get(2)); // Banana
+        list.set(2, "Cherry");
+
+        // Remove by value or index
+        list.remove("Orange");
+        list.remove(0);
+
+        // Sort elements
+        Collections.sort(list);
+        System.out.println("Sorted: " + list);
+
+        // Reverse order
+        Collections.sort(list, Collections.reverseOrder());
+        System.out.println("Reversed: " + list);
+
+        // Search
+        System.out.println("Contains Mango: " + list.contains("Mango"));
+
+        // Convert to array
+        Object[] arr = list.toArray();
+
+        // Iterate
+        for (String item : list) {
+            System.out.println(item);
+        }
+
+        list.clear();
+    }
+}</code></pre>
+
+      <h3>📘 Useful Methods</h3>
+      <ul>
+        <li><code>add(E e)</code> — add element</li>
+        <li><code>get(int index)</code> — get by index</li>
+        <li><code>set(int index, E e)</code> — update element</li>
+        <li><code>remove(Object o)</code> / <code>remove(int index)</code></li>
+        <li><code>contains(Object o)</code></li>
+        <li>
+          <code>indexOf(Object o)</code>, <code>lastIndexOf(Object o)</code>
+        </li>
+        <li><code>Collections.sort(list)</code></li>
+        <li><code>Collections.reverse(list)</code></li>
+      </ul>
+    </div>
+
+    <div id="hashset" class="section hidden">
+      <h2>HashSet — Unique Elements</h2>
+      <p><code>HashSet</code> stores only unique items and is unordered.</p>
+      <pre><code>import java.util.*;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        HashSet&lt;String&gt; set = new HashSet<>();
+
+        set.add("Java");
+        set.add("Python");
+        set.add("C++");
+        set.add("Java"); // ignored
+
+        System.out.println("Set: " + set);
+
+        set.remove("C++");
+        System.out.println("Contains Python: " + set.contains("Python"));
+
+        // Convert to list and sort
+        List&lt;String&gt; sorted = new ArrayList&lt;&gt;(set);
+        Collections.sort(sorted);
+        System.out.println("Sorted: " + sorted);
+
+        for (String lang : set) {
+            System.out.println(lang);
+        }
+
+        set.clear();
+    }
+}</code></pre>
+
+      <h3>📘 Useful Methods</h3>
+      <ul>
+        <li><code>add(E e)</code></li>
+        <li><code>remove(Object o)</code></li>
+        <li><code>contains(Object o)</code></li>
+        <li><code>isEmpty()</code></li>
+        <li><code>size()</code></li>
+        <li><code>clear()</code></li>
+      </ul>
+    </div>
+
+    <div id="arraydeque" class="section hidden">
+      <h2>ArrayDeque — Double-Ended Queue</h2>
+      <p><code>ArrayDeque</code> can be used both as a stack and as a queue.</p>
+      <pre><code>import java.util.ArrayDeque;
+
+public class ArrayDequeExample {
+    public static void main(String[] args) {
+        ArrayDeque&lt;String&gt; dq = new ArrayDeque<>();
+
+        // Queue usage (FIFO)
+        dq.offer("A");
+        dq.offer("B");
+        dq.offer("C");
+
+        System.out.println("Front: " + dq.peek());
+        dq.poll(); // remove front
+        System.out.println(dq);
+
+        // Stack usage (LIFO)
+        dq.push("X");
+        dq.push("Y");
+        dq.push("Z");
+
+        System.out.println("Stack pop: " + dq.pop());
+        System.out.println(dq);
+    }
+}</code></pre>
+
+      <h3>📘 Useful Methods</h3>
+      <ul>
+        <li><code>add(E e)</code>, <code>offer(E e)</code></li>
+        <li><code>remove()</code>, <code>poll()</code></li>
+        <li><code>peek()</code></li>
+        <li><code>push(E e)</code>, <code>pop()</code></li>
+        <li><code>clear()</code></li>
+        <li><code>size()</code></li>
+      </ul>
+    </div>
+
+    <div id="hashmap" class="section hidden">
+      <h2>HashMap — Key-Value Pairs</h2>
+      <p>
+        <code>HashMap</code> stores data as key-value pairs, allowing fast
+        access by key.
+      </p>
+      <pre><code>import java.util.*;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        HashMap&lt;String, Integer&gt; map = new HashMap<>();
+
+        // Add key-value pairs
+        map.put("Alice", 90);
+        map.put("Bob", 85);
+        map.put("Charlie", 95);
+
+        // Access
+        System.out.println("Bob's score: " + map.get("Bob"));
+
+        // Replace value
+        map.replace("Alice", 92);
+
+        // Remove
+        map.remove("Bob");
+
+        // Iterate
+        for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
+            System.out.println(entry.getKey() + " => " + entry.getValue());
+        }
+
+        // Sort by value
+        map.entrySet()
+           .stream()
+           .sorted(Map.Entry.comparingByValue())
+           .forEach(e -&gt; System.out.println(e.getKey() + ": " + e.getValue()));
+
+        map.clear();
+    }
+}</code></pre>
+
+      <h3>📘 Useful Methods</h3>
+      <ul>
+        <li><code>put(K key, V value)</code></li>
+        <li><code>get(Object key)</code></li>
+        <li>
+          <code>containsKey(Object key)</code>,
+          <code>containsValue(Object v)</code>
+        </li>
+        <li><code>remove(Object key)</code></li>
+        <li><code>replace(K key, V newValue)</code></li>
+        <li>
+          <code>keySet()</code>, <code>values()</code>, <code>entrySet()</code>
+        </li>
+        <li><code>clear()</code></li>
+      </ul>
+    </div>
+
+    <script>
+      function showSection(id) {
+        document
+          .querySelectorAll(".section")
+          .forEach((s) => s.classList.add("hidden"));
+        document.getElementById(id).classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

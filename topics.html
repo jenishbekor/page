@@ -3,32 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Java Tutorial: I/O and Collections</title>
+    <title>Programming Tutorial: Java, Python, JavaScript</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <h1>Java Tutorial: Input/Output and Collections</h1>
 
-    <!-- Navigation Buttons -->
+  <body>
+    <h1>Programming Tutorial: Java, Python, JavaScript</h1>
+
+    <!-- Navigation -->
     <div class="nav-buttons">
-      <button onclick="showSection('io')">1️⃣ Input / Output</button>
-      <button onclick="showSection('string')">2️⃣ String Methods</button>
-      <button onclick="showSection('arraylist')">2️⃣ ArrayList</button>
-      <button onclick="showSection('hashset')">3️⃣ HashSet</button>
-      <button onclick="showSection('arraydeque')">4️⃣ ArrayDeque</button>
-      <button onclick="showSection('hashmap')">5️⃣ HashMap</button>
+      <button onclick="showSection('java')">☕ Java</button>
+      <button onclick="showSection('python')">🐍 Python</button>
+      <button onclick="showSection('js')">✨ JavaScript</button>
     </div>
 
-    <!-- Sections -->
-    <div id="io" class="section">
-      <h2>Java Input and Output</h2>
-      <p>
-        Use <code>Scanner</code> for console input and
-        <code>System.out</code> for output.
-      </p>
+    <!-- ============================= -->
+    <!--           JAVA                -->
+    <!-- ============================= -->
+    <div id="java" class="section">
+      <h2>☕ Java — Input / Output</h2>
+      <p>Basic input/output:</p>
       <pre><code>import java.util.Scanner;
 
-public class InputExample {
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -38,296 +35,218 @@ public class InputExample {
         System.out.print("Enter age: ");
         int age = sc.nextInt();
 
-        System.out.println("Hello, " + name + "! You are " + age + " years old.");
-
-        sc.close();
+        System.out.println("Hello " + name + ", age = " + age);
     }
 }</code></pre>
-    </div>
 
-    <!-- String Methods -->
-    <div id="string" class="section hidden">
-      <h2>String — Text Manipulation</h2>
-      <p>
-        Strings in Java are immutable and provide many helpful methods for
-        processing text.
-      </p>
-      <pre><code>public class StringMethods {
+      <p>Sum of 3 numbers (one line input):</p>
+      <pre><code>import java.util.Scanner;
+
+public class SumThree {
     public static void main(String[] args) {
-        String text = "  Hello Java World!  ";
-
-        // Trim spaces
-        System.out.println(text.trim());
-
-        // Length
-        System.out.println("Length: " + text.length());
-
-        // Access character
-        System.out.println("First char: " + text.charAt(0));
-
-        // Substring
-        System.out.println("Substring: " + text.substring(2, 7));
-
-        // Case conversion
-        System.out.println(text.toUpperCase());
-        System.out.println(text.toLowerCase());
-
-        // Replace
-        System.out.println(text.replace("Java", "Python"));
-
-        // Check content
-        System.out.println(text.contains("Java"));
-        System.out.println(text.startsWith("  H"));
-        System.out.println(text.endsWith("!  "));
-
-        // Split string
-        String[] words = text.trim().split(" ");
-        for (String w : words) System.out.println(w);
-
-        // Join strings
-        String joined = String.join("-", "apple", "banana", "cherry");
-        System.out.println(joined);
-
-        // Compare
-        String a = "Hello";
-        String b = "hello";
-        System.out.println(a.equals(b));          // false
-        System.out.println(a.equalsIgnoreCase(b));// true
-
-        // Concatenate
-        String greeting = a.concat(" ").concat("Java");
-        System.out.println(greeting);
-
-        // Check empty or blank
-        String s = " ";
-        System.out.println(s.isEmpty()); // false
-        System.out.println(s.isBlank()); // true
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        int c = sc.nextInt();
+        System.out.println(a + b + c);
     }
 }</code></pre>
 
-      <h3>📘 Useful Methods</h3>
-      <ul>
-        <li><code>length()</code> — number of characters</li>
-        <li><code>charAt(int index)</code> — get character</li>
-        <li><code>substring(int start, int end)</code></li>
-        <li><code>toUpperCase()</code>, <code>toLowerCase()</code></li>
-        <li><code>trim()</code>, <code>strip()</code></li>
-        <li><code>replace(old, new)</code></li>
-        <li><code>split(regex)</code>, <code>join(delimiter, ...)</code></li>
-        <li><code>equals()</code>, <code>equalsIgnoreCase()</code></li>
-        <li>
-          <code>startsWith()</code>, <code>endsWith()</code>,
-          <code>contains()</code>
-        </li>
-        <li><code>isEmpty()</code>, <code>isBlank()</code></li>
-        <li><code>concat(String s)</code></li>
-      </ul>
-    </div>
+      <h2>Java — If Structure</h2>
+      <pre><code>int x = 10;
 
-    <div id="arraylist" class="section hidden">
-      <h2>ArrayList — Dynamic Array</h2>
-      <p>
-        <code>ArrayList</code> allows dynamic resizing, duplicates, and ordered
-        storage.
-      </p>
-      <pre><code>import java.util.*;
-
-public class ArrayListExample {
-    public static void main(String[] args) {
-        ArrayList&lt;String&gt; list = new ArrayList<>();
-
-        // Add elements
-        list.add("Orange");
-        list.add("Apple");
-        list.add("Banana");
-        list.add("Mango");
-
-        // Access and modify
-        System.out.println(list.get(2)); // Banana
-        list.set(2, "Cherry");
-
-        // Remove by value or index
-        list.remove("Orange");
-        list.remove(0);
-
-        // Sort elements
-        Collections.sort(list);
-        System.out.println("Sorted: " + list);
-
-        // Reverse order
-        Collections.sort(list, Collections.reverseOrder());
-        System.out.println("Reversed: " + list);
-
-        // Search
-        System.out.println("Contains Mango: " + list.contains("Mango"));
-
-        // Convert to array
-        Object[] arr = list.toArray();
-
-        // Iterate
-        for (String item : list) {
-            System.out.println(item);
-        }
-
-        list.clear();
-    }
+if (x > 0) {
+    System.out.println("Positive");
+} else if (x < 0) {
+    System.out.println("Negative");
+} else {
+    System.out.println("Zero");
 }</code></pre>
 
-      <h3>📘 Useful Methods</h3>
-      <ul>
-        <li><code>add(E e)</code> — add element</li>
-        <li><code>get(int index)</code> — get by index</li>
-        <li><code>set(int index, E e)</code> — update element</li>
-        <li><code>remove(Object o)</code> / <code>remove(int index)</code></li>
-        <li><code>contains(Object o)</code></li>
-        <li>
-          <code>indexOf(Object o)</code>, <code>lastIndexOf(Object o)</code>
-        </li>
-        <li><code>Collections.sort(list)</code></li>
-        <li><code>Collections.reverse(list)</code></li>
-      </ul>
-    </div>
+      <h2>Java — Loops</h2>
+      <pre><code>for (int i = 1; i <= 5; i++)
+    System.out.println(i);
 
-    <div id="hashset" class="section hidden">
-      <h2>HashSet — Unique Elements</h2>
-      <p><code>HashSet</code> stores only unique items and is unordered.</p>
-      <pre><code>import java.util.*;
-
-public class HashSetExample {
-    public static void main(String[] args) {
-        HashSet&lt;String&gt; set = new HashSet<>();
-
-        set.add("Java");
-        set.add("Python");
-        set.add("C++");
-        set.add("Java"); // ignored
-
-        System.out.println("Set: " + set);
-
-        set.remove("C++");
-        System.out.println("Contains Python: " + set.contains("Python"));
-
-        // Convert to list and sort
-        List&lt;String&gt; sorted = new ArrayList&lt;&gt;(set);
-        Collections.sort(sorted);
-        System.out.println("Sorted: " + sorted);
-
-        for (String lang : set) {
-            System.out.println(lang);
-        }
-
-        set.clear();
-    }
+int j = 1;
+while (j <= 5) {
+    System.out.println(j);
+    j++;
 }</code></pre>
 
-      <h3>📘 Useful Methods</h3>
-      <ul>
-        <li><code>add(E e)</code></li>
-        <li><code>remove(Object o)</code></li>
-        <li><code>contains(Object o)</code></li>
-        <li><code>isEmpty()</code></li>
-        <li><code>size()</code></li>
-        <li><code>clear()</code></li>
-      </ul>
+      <h2>Java — Arrays</h2>
+      <pre><code>int[] nums = {10, 20, 30};
+
+for (int n : nums)
+    System.out.println(n);
+
+System.out.println(nums[1]); // 20</code></pre>
+
+      <h2>Java — Strings</h2>
+      <pre><code>String s = "Hello Java";
+
+System.out.println(s.length());
+System.out.println(s.toUpperCase());
+System.out.println(s.substring(0, 5));
+System.out.println(s.contains("Java"));
+</code></pre>
     </div>
 
-    <div id="arraydeque" class="section hidden">
-      <h2>ArrayDeque — Double-Ended Queue</h2>
-      <p><code>ArrayDeque</code> can be used both as a stack and as a queue.</p>
-      <pre><code>import java.util.ArrayDeque;
+    <!-- ============================= -->
+    <!--           PYTHON              -->
+    <!-- ============================= -->
+    <div id="python" class="section hidden">
+      <h2>🐍 Python — Input / Output</h2>
+      <p>Basic input/output:</p>
+      <pre><code>name = input("Enter name: ")
+age = int(input("Enter age: "))
 
-public class ArrayDequeExample {
-    public static void main(String[] args) {
-        ArrayDeque&lt;String&gt; dq = new ArrayDeque<>();
+print(f"Hello {name}, age = {age}")</code></pre>
 
-        // Queue usage (FIFO)
-        dq.offer("A");
-        dq.offer("B");
-        dq.offer("C");
+      <p>Sum of 3 numbers (one line input):</p>
+      <pre><code>a, b, c = map(int, input().split())
+print(a + b + c)</code></pre>
 
-        System.out.println("Front: " + dq.peek());
-        dq.poll(); // remove front
-        System.out.println(dq);
+      <h2>Python — If Structure</h2>
+      <pre><code>x = 10
 
-        // Stack usage (LIFO)
-        dq.push("X");
-        dq.push("Y");
-        dq.push("Z");
+if x > 0:
+    print("Positive")
+elif x < 0:
+    print("Negative")
+else:
+    print("Zero")</code></pre>
 
-        System.out.println("Stack pop: " + dq.pop());
-        System.out.println(dq);
+      <h2>Python — Loops</h2>
+      <pre><code>for i in range(1, 6):
+    print(i)
+
+j = 1
+while j <= 5:
+    print(j)
+    j += 1</code></pre>
+
+      <h2>Python — Lists (Arrays)</h2>
+      <pre><code>nums = [10, 20, 30]
+
+for n in nums:
+    print(n)
+
+print(nums[1])  # 20</code></pre>
+
+      <h2>Python — Strings</h2>
+      <pre><code>s = "Hello Python"
+
+print(len(s))
+print(s.upper())
+print(s[0:5])
+print("Python" in s)</code></pre>
+    </div>
+
+    <!-- ============================= -->
+    <!--         JAVASCRIPT            -->
+    <!-- ============================= -->
+    <div id="js" class="section hidden">
+      <h2>✨ JavaScript — Input / Output (Custom Template)</h2>
+      <p>Sum of 3 numbers from one line:</p>
+      <pre><code>// Starter function main
+function main() {
+    // Read 3 numbers in one line
+    let a = Number(input());
+    let b = Number(input());
+    let c = Number(input());
+
+    println(a + b + c);
+}
+
+// --- Simplified input/output system ---
+const fs = require("fs");
+
+// Read all lines
+let rawLines = fs.readFileSync(0, "utf8").split("\n").map(line => line.replace(/\r$/, ""));
+
+let lineIndex = 0;
+let tokenIndex = 0;
+let currentTokens = [];
+
+// Read next token
+function input() {
+    while (tokenIndex >= currentTokens.length) {
+        if (lineIndex >= rawLines.length) return "";
+        currentTokens = rawLines[lineIndex++].trim().split(/\s+/);
+        tokenIndex = 0;
     }
+    return currentTokens[tokenIndex++];
+}
+
+// Read rest of current line
+function inputLine() {
+    if (lineIndex >= rawLines.length && tokenIndex >= currentTokens.length) return "";
+    if (tokenIndex < currentTokens.length) {
+        let rest = currentTokens.slice(tokenIndex).join(" ");
+        tokenIndex = currentTokens.length;
+        return rest;
+    }
+    if (lineIndex < rawLines.length) {
+        let line = rawLines[lineIndex++];
+        currentTokens = line.trim().split(/\s+/);
+        tokenIndex = currentTokens.length;
+        return line;
+    }
+    return "";
+}
+
+function print(val) {
+    process.stdout.write(String(val));
+}
+
+function println(val) {
+    console.log(val);
+}
+
+main();</code></pre>
+
+      <h2>JavaScript — If Structure</h2>
+      <pre><code>let x = 10;
+
+if (x > 0) {
+    console.log("Positive");
+} else if (x < 0) {
+    console.log("Negative");
+} else {
+    console.log("Zero");
 }</code></pre>
 
-      <h3>📘 Useful Methods</h3>
-      <ul>
-        <li><code>add(E e)</code>, <code>offer(E e)</code></li>
-        <li><code>remove()</code>, <code>poll()</code></li>
-        <li><code>peek()</code></li>
-        <li><code>push(E e)</code>, <code>pop()</code></li>
-        <li><code>clear()</code></li>
-        <li><code>size()</code></li>
-      </ul>
-    </div>
+      <h2>JavaScript — Loops</h2>
+      <pre><code>for (let i = 1; i <= 5; i++)
+    console.log(i);
 
-    <div id="hashmap" class="section hidden">
-      <h2>HashMap — Key-Value Pairs</h2>
-      <p>
-        <code>HashMap</code> stores data as key-value pairs, allowing fast
-        access by key.
-      </p>
-      <pre><code>import java.util.*;
-
-public class HashMapExample {
-    public static void main(String[] args) {
-        HashMap&lt;String, Integer&gt; map = new HashMap<>();
-
-        // Add key-value pairs
-        map.put("Alice", 90);
-        map.put("Bob", 85);
-        map.put("Charlie", 95);
-
-        // Access
-        System.out.println("Bob's score: " + map.get("Bob"));
-
-        // Replace value
-        map.replace("Alice", 92);
-
-        // Remove
-        map.remove("Bob");
-
-        // Iterate
-        for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " => " + entry.getValue());
-        }
-
-        // Sort by value
-        map.entrySet()
-           .stream()
-           .sorted(Map.Entry.comparingByValue())
-           .forEach(e -&gt; System.out.println(e.getKey() + ": " + e.getValue()));
-
-        map.clear();
-    }
+let j = 1;
+while (j <= 5) {
+    console.log(j);
+    j++;
 }</code></pre>
 
-      <h3>📘 Useful Methods</h3>
-      <ul>
-        <li><code>put(K key, V value)</code></li>
-        <li><code>get(Object key)</code></li>
-        <li>
-          <code>containsKey(Object key)</code>,
-          <code>containsValue(Object v)</code>
-        </li>
-        <li><code>remove(Object key)</code></li>
-        <li><code>replace(K key, V newValue)</code></li>
-        <li>
-          <code>keySet()</code>, <code>values()</code>, <code>entrySet()</code>
-        </li>
-        <li><code>clear()</code></li>
-      </ul>
+      <h2>JavaScript — Arrays</h2>
+      <pre><code>let nums = [10, 20, 30];
+
+    // Loop through array
+    for (let n of nums) {
+        console.log(n); // prints each element
+    }
+
+    // Access by index
+    console.log(nums[1]); // 20</code></pre>
+
+      <h2>JavaScript — Strings</h2>
+      <pre><code>let s = "Hello JavaScript";
+
+console.log(s.length);
+console.log(s.toUpperCase());
+console.log(s.substring(0, 5));
+console.log(s.includes("Java"));</code></pre>
     </div>
 
+    <!-- Script -->
     <script>
       function showSection(id) {
         document
