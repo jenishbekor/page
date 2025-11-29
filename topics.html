@@ -97,10 +97,15 @@ System.out.println(s.contains("Java"));
     <div id="python" class="section hidden">
       <h2>🐍 Python — Input / Output</h2>
       <p>Basic input/output:</p>
-      <pre><code>name = input("Enter name: ")
-age = int(input("Enter age: "))
+      <pre><code>
+        text = input()  # input string 
+        num = int(input())  #input number
 
-print(f"Hello {name}, age = {age}")</code></pre>
+        print(text)  # print and make a new line
+        print(num, end=' ')  # print and make a space
+
+        print(f"Hello {name}, age = {age}")
+    </code></pre>
 
       <p>Sum of 3 numbers (one line input):</p>
       <pre><code>a, b, c = map(int, input().split())
