@@ -29,13 +29,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter name: ");
-        String name = sc.nextLine();
+        String line = sc.nextLine();  // input one line
+        String word = sc.next();  // input one word
 
-        System.out.print("Enter age: ");
-        int age = sc.nextInt();
+        int num = sc.nextInt(); // input an integer number
+        int dob = sc.nextDouble(); // input a double number
 
-        System.out.println("Hello " + name + ", age = " + age);
+        System.out.println("Hello " + line + ", age = " + num);  // print and make new line
+        System.out.print("Hello " + word + ", weight = " + dob);  // print without new line 
     }
 }</code></pre>
 
