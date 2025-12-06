@@ -17,6 +17,9 @@
       <button onclick="showSection('hashset')">3️⃣ HashSet</button>
       <button onclick="showSection('arraydeque')">4️⃣ ArrayDeque</button>
       <button onclick="showSection('hashmap')">5️⃣ HashMap</button>
+      <button onclick="showSection('classesobjects')">
+        5️⃣ Classes and Objects
+      </button>
     </div>
 
     <!-- Sections -->
@@ -325,6 +328,88 @@ public class HashMapExample {
           <code>keySet()</code>, <code>values()</code>, <code>entrySet()</code>
         </li>
         <li><code>clear()</code></li>
+      </ul>
+    </div>
+
+    <div id="classesobjects" class="section hidden">
+      <h2>Classes and Objects — Basics of OOP</h2>
+      <p>
+        A <strong>class</strong> is a blueprint for creating objects. An
+        <strong>object</strong> is an instance of a class containing data
+        (fields) and behavior (methods).
+      </p>
+
+      <h3>📌 Important Concepts</h3>
+      <ul>
+        <li><strong>Fields</strong> — variables inside a class</li>
+        <li><strong>Constructor</strong> — runs when creating an object</li>
+        <li><strong>Methods</strong> — actions/behaviors of the object</li>
+        <li><strong>this</strong> keyword — refers to the current object</li>
+        <li><strong>implements Comparable</strong> — allows sorting objects</li>
+        <li>
+          <strong>Collections.sort()</strong> — sorts based on compareTo()
+        </li>
+      </ul>
+
+      <h3>📘 Example: Class with Comparable for Sorting</h3>
+
+      <pre><code>import java.util.*;
+
+class Point implements Comparable&lt;Point&gt; {
+    int x, y;
+
+    // Constructor
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // Method to display point
+    void display() {
+        System.out.println("(" + x + ", " + y + ")");
+    }
+
+    // Compare logic for sorting
+    @Override
+    public int compareTo(Point point) {
+        if (this.x == point.x)
+            return this.y - point.y;  // sort by y if x is same
+        return this.x - point.x;      // sort by x
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Point p1 = new Point(2, 5);
+        Point p2 = new Point(1, 3);
+        Point p3 = new Point(2, 1);
+
+        ArrayList&lt;Point&gt; points = new ArrayList&lt;&gt;();
+        points.add(p1);
+        points.add(p2);
+        points.add(p3);
+        points.add(new Point(0, 1));
+        points.add(new Point(3, 0));
+        points.add(new Point(3, 1));
+
+        // Sorting points
+        Collections.sort(points);
+
+        // Displaying sorted points
+        for (Point p : points) {
+            p.display();
+        }
+    }
+}</code></pre>
+
+      <h3>📌 Output Explanation</h3>
+      <ul>
+        <li>Points are sorted first by <strong>x</strong>.</li>
+        <li>If x is the same, they are sorted by <strong>y</strong>.</li>
+        <li>
+          This is possible because the class implements
+          <code>Comparable&lt;Point&gt;</code>.
+        </li>
       </ul>
     </div>
 
