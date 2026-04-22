@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -37,6 +37,8 @@ public class Main {
 
         System.out.println("Hello " + line + ", age = " + num);  // print and make new line
         System.out.print("Hello " + word + ", weight = " + dob);  // print without new line 
+
+        System.out.printf("%.2f\n", value);  // print double with 2 decimal places
     }
 }</code></pre>
 
@@ -106,6 +108,8 @@ print(text)  # print and make a new line
 print(num, end=' ')  # print and make a space
 
 print(f"Hello {name}, age = {age}")
+
+print(f"{num:.2f}") # print with 2 decimal places
     </code></pre>
 
       <p>Sum of 3 numbers (one line input):</p>
@@ -164,8 +168,9 @@ function main() {
     let b = Number(input());
     let c = Number(input());
 
-    println(a + b + c);
-}
+    println(a + b + c); // print and make a new line
+    print(a.toFixed(2)); // print with 2 decimal places
+}   
 
 // --- Simplified input/output system ---
 const fs = require("fs");
