@@ -14,6 +14,7 @@
     <div class="nav-buttons">
       <button onclick="showSection('java')">☕ Java</button>
       <button onclick="showSection('python')">🐍 Python</button>
+      <button onclick="showSection('cpp')">⚙️ C++</button>
       <button onclick="showSection('js')">✨ JavaScript</button>
     </div>
 
@@ -169,6 +170,89 @@ print(len(s))
 print(s.upper())
 print(s[0:5])
 print("Python" in s)</code></pre>
+    </div>
+
+    <!-- ============================= -->
+    <!--             C++               -->
+    <!-- ============================= -->
+    <div id="cpp" class="section hidden">
+      <h2>⚙️ C++ — Input / Output</h2>
+      <p>Basic input/output:</p>
+      <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+int main() {
+    string line, word;
+    
+    getline(cin, line);  // input one line
+    cin >> word;         // input one word
+
+    int num;
+    double dob;
+    cin >> num >> dob;   // input multiple numbers
+
+    cout << "Hello " << line << ", age = " << num << endl;  // print and make new line
+    cout << "Hello " << word << ", weight = " << dob;       // print without new line 
+
+    cout << fixed << setprecision(2) << dob << "\n";        // print double with 2 decimal places
+    return 0;
+}</code></pre>
+
+      <p>Sum of 3 numbers (one line input):</p>
+      <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cin >> a >> b >> c;
+    cout << a + b + c << endl;
+    return 0;
+}</code></pre>
+
+      <h2>C++ — If Structure</h2>
+      <pre><code>int x = 10;
+
+if (x > 0) {
+    cout << "Positive" << endl;
+} else if (x < 0) {
+    cout << "Negative" << endl;
+} else {
+    cout << "Zero" << endl;
+}</code></pre>
+
+      <h2>C++ — Loops</h2>
+      <pre><code>for (int i = 1; i <= 5; i++)
+    cout << i << endl;
+
+int j = 1;
+while (j <= 5) {
+    cout << j << endl;
+    j++;
+}</code></pre>
+
+      <h2>C++ — Arrays</h2>
+      <pre><code>int nums[] = {10, 20, 30};
+// int nums[5];
+
+for (int n : nums)
+    cout << n << endl;
+
+cout << nums[1] << endl; // 20</code></pre>
+
+      <h2>C++ — Strings</h2>
+      <pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+// ... inside main ...
+string s = "Hello C++";
+
+cout << s.length() << endl;
+cout << s.substr(0, 5) << endl; 
+cout << (s.find("C++") != string::npos) << endl; // 1 (true) if found</code></pre>
     </div>
 
     <!-- ============================= -->
